@@ -1,0 +1,68 @@
+/* Preloader.css */
+.preloader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0a0a20, #1a1a4a);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.preloader-content {
+  text-align: center;
+  position: relative;
+}
+
+.preloader-circles {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 30px;
+}
+
+.preloader-circle {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  box-shadow: 0 0 10px rgba(93, 69, 255, 0.5);
+}
+
+.circle-1 { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.circle-2 { top: 20%; left: 20%; }
+.circle-3 { top: 20%; right: 20%; }
+.circle-4 { bottom: 20%; left: 20%; }
+.circle-5 { bottom: 20%; right: 20%; }
+
+.preloader-text {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  font-family: var(--font-secondary);
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@media (max-width: 576px) {
+  .preloader-text {
+    font-size: 1.2rem;
+  }
+
+  .preloader-circles {
+    width: 80px;
+    height: 80px;
+  }
+
+  .preloader-circle {
+    width: 12px;
+    height: 12px;
+  }
+}

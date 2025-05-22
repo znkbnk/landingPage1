@@ -1,0 +1,258 @@
+/* Features.css */
+.features {
+  background-color: var(--light);
+  position: relative;
+  overflow: hidden;
+}
+
+.features-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  position: relative;
+  z-index: 2;
+}
+
+.features-timeline {
+  flex: 1;
+  position: relative;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--primary), var(--secondary));
+  border-radius: 2px;
+  transform-origin: top;
+}
+
+.timeline-items {
+  position: relative;
+  padding: 30px 0;
+}
+
+.feature-item {
+  position: relative;
+  margin-bottom: 80px;
+  width: 100%;
+}
+
+.feature-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px rgba(93, 69, 255, 0.2);
+}
+
+.feature-content {
+  width: 45%;
+  padding: 25px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.feature-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.feature-item.left .feature-content {
+  margin-right: 55%;
+}
+
+.feature-item.right .feature-content {
+  margin-left: 55%;
+}
+
+.feature-item.left .feature-content::before {
+  right: -10px;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent white;
+}
+
+.feature-item.right .feature-content::before {
+  left: -10px;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+}
+
+.feature-content h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: var(--dark);
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.feature-content p {
+  color: var(--gray);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.features-image {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+}
+
+.image-container {
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 4/3;
+  border-radius: 20px;
+  background-color: #1e1e2e;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  transform-style: preserve-3d;
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(93, 69, 255, 0.05), rgba(255, 69, 136, 0.05));
+  z-index: 1;
+}
+
+.image-code {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  font-family: 'Fira Code', monospace;
+  color: #f1f1f1;
+  font-size: 0.9rem;
+  z-index: 2;
+}
+
+.image-code pre {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  line-height: 1.6;
+}
+
+.code-comment {
+  color: #6272a4;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.code-keyword {
+  color: #ff79c6;
+}
+
+.code-string {
+  color: #50fa7b;
+}
+
+.features-decorations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.decoration {
+  position: absolute;
+  opacity: 0.05;
+}
+
+.decoration-1 {
+  top: 10%;
+  left: 5%;
+  width: 200px;
+  height: 200px;
+  background: var(--primary);
+  border-radius: 50%;
+  filter: blur(50px);
+}
+
+.decoration-2 {
+  bottom: 15%;
+  right: 10%;
+  width: 150px;
+  height: 150px;
+  background: var(--secondary);
+  border-radius: 50%;
+  filter: blur(40px);
+}
+
+.decoration-3 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background: var(--accent);
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.03;
+}
+
+@media (max-width: 992px) {
+  .features-content {
+    flex-direction: column;
+  }
+  
+  .features-image {
+    order: -1;
+    margin-bottom: 50px;
+  }
+  
+  .image-container {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline-line {
+    left: 20px;
+  }
+  
+  .timeline-dot {
+    left: 20px;
+  }
+  
+  .feature-item.left .feature-content,
+  .feature-item.right .feature-content {
+    width: calc(100% - 50px);
+    margin-left: 50px;
+    margin-right: 0;
+  }
+  
+  .feature-item.left .feature-content::before,
+  .feature-item.right .feature-content::before {
+    left: -10px;
+    right: auto;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+  }
+}

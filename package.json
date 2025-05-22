@@ -1,0 +1,23 @@
+{
+  "name": "landingPage1",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "rspack dev",
+    "build": "rspack build",
+    "preview": "rspack preview"
+  },
+  "dependencies": {
+    "gsap": "^3.13.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@rspack/cli": "^1.3.11",
+    "@rspack/core": "^1.3.11",
+    "@rspack/plugin-react-refresh": "^1.4.3",
+    "@types/react": "^19.1.4",
+    "@types/react-dom": "^19.1.5",
+    "react-refresh": "^0.17.0"
+  }
+}
