@@ -1,4 +1,3 @@
-// Features.jsx
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import "./Features.css";
@@ -10,7 +9,6 @@ const Features = () => {
   const featureItemsRef = useRef([]);
   const imageRef = useRef(null);
 
-  // Add to the featureItemsRef array
   const addToFeatureRefs = (el) => {
     if (el && !featureItemsRef.current.includes(el)) {
       featureItemsRef.current.push(el);
@@ -27,7 +25,6 @@ const Features = () => {
 
   useEffect(() => {
     let ctx = gsap.context(() => {
-      // Section title animation
       gsap.from(titleRef.current.querySelectorAll(".title-animation"), {
         y: 50,
         opacity: 0,
@@ -41,7 +38,6 @@ const Features = () => {
         },
       });
 
-      // Timeline animation
       gsap.from(timelineRef.current, {
         scaleY: 0,
         duration: 1.5,
@@ -54,7 +50,6 @@ const Features = () => {
         },
       });
 
-      // Feature items staggered animation
       featureItemsRef.current.forEach((item, index) => {
         const tl = gsap.timeline({
           scrollTrigger: {
@@ -98,7 +93,6 @@ const Features = () => {
           );
       });
 
-      // Image animation
       gsap.from(imageRef.current, {
         y: 100,
         opacity: 0,
@@ -111,7 +105,6 @@ const Features = () => {
         },
       });
 
-      // Floating animation for the image
       gsap.to(imageRef.current, {
         y: 20,
         rotation: 3,
@@ -121,7 +114,6 @@ const Features = () => {
         yoyo: true,
       });
 
-      // Animation for the 3D tilt effect on hover
       const handleImageMouseMove = (e) => {
         const imgContainer = imageRef.current;
         const { offsetWidth: width, offsetHeight: height } = imgContainer;
@@ -244,7 +236,6 @@ const Features = () => {
               <div className='image-overlay'></div>
               <div className='image-code'>
                 <pre>
-                  <span className='code-comment'>// GSAP Animation</span>
                   <span className='code-keyword'>gsap</span>.timeline() .from(
                   <span className='code-string'>".element"</span>, {"{"}
                   y: 100, opacity: 0, duration: 1, ease:{" "}

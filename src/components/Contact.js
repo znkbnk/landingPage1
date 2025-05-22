@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './Contact.css';
 
-// Register the ScrollTrigger plugin
+
 gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
@@ -12,7 +12,7 @@ const Contact = () => {
   const formRef = useRef(null);
   const mapRef = useRef(null);
   const infoRef = useRef(null);
-  const buttonRef = useRef(null); // Add a specific ref for the button
+  const buttonRef = useRef(null); 
   
   const [formState, setFormState] = useState({
     name: '',
@@ -28,7 +28,6 @@ const Contact = () => {
     const { name, value } = e.target;
     setFormState(prev => ({ ...prev, [name]: value }));
     
-    // Get the label associated with this input
     const label = e.target.previousElementSibling;
     if (value) {
       gsap.to(label, {
@@ -53,12 +52,10 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitStatus('success');
       
-      // Reset form after success message
       setTimeout(() => {
         setFormState({
           name: '',
@@ -68,7 +65,6 @@ const Contact = () => {
         });
         setSubmitStatus(null);
         
-        // Reset labels when form is reset
         const labels = formRef.current.querySelectorAll('label');
         labels.forEach(label => {
           gsap.to(label, {
@@ -82,7 +78,6 @@ const Contact = () => {
       }, 3000);
     }, 1500);
     
-    // Animation for input elements only (not button)
     const formInputElements = formRef.current.querySelectorAll('input, textarea');
     gsap.to(formInputElements, {
       y: -10,
@@ -103,14 +98,11 @@ const Contact = () => {
     });
   };
   
-  // Force button and contact info visibility
   useEffect(() => {
-    // Set button to visible immediately on component mount
     if (buttonRef.current) {
       gsap.set(buttonRef.current, { opacity: 1, clearProps: "all" });
     }
     
-    // Ensure contact info is visible
     if (infoRef.current) {
       const infoItems = infoRef.current.querySelectorAll('.contact-info-item');
       if (infoItems && infoItems.length > 0) {
@@ -120,14 +112,11 @@ const Contact = () => {
   }, []);
   
   useEffect(() => {
-    // Create a GSAP context for better memory management
     const ctx = gsap.context(() => {
-      // Reset any potential GSAP opacities on button
       if (buttonRef.current) {
         gsap.set(buttonRef.current, { opacity: 1, clearProps: "all" });
       }
       
-      // Title animations
       const titleElements = titleRef.current?.querySelectorAll('.title-animation');
       if (titleElements && titleElements.length > 0) {
         gsap.from(titleElements, {
@@ -144,7 +133,6 @@ const Contact = () => {
         });
       }
       
-      // Form animation - excluding the button
       if (formRef.current) {
         const formContent = formRef.current.querySelectorAll('.form-group');
         gsap.from(formContent, {
@@ -161,7 +149,6 @@ const Contact = () => {
         });
       }
       
-      // Map animation
       if (mapRef.current) {
         gsap.from(mapRef.current, {
           x: 50,
@@ -176,14 +163,11 @@ const Contact = () => {
         });
       }
       
-      // Contact info items animation - Modified to ensure visibility
       if (infoRef.current) {
         const infoItems = infoRef.current.querySelectorAll('.contact-info-item');
         if (infoItems && infoItems.length > 0) {
-          // First ensure they are visible and have opacity 1 as default
           gsap.set(infoItems, { opacity: 1, clearProps: "visibility" });
           
-          // Then animate from a hidden state
           gsap.fromTo(infoItems, 
             { y: 30, opacity: 0 },
             {
@@ -198,7 +182,6 @@ const Contact = () => {
                 toggleActions: "play none none none"
               },
               onComplete: () => {
-                // Ensure items remain visible after animation
                 gsap.set(infoItems, { opacity: 1, clearProps: "visibility" });
               }
             }
@@ -206,7 +189,6 @@ const Contact = () => {
         }
       }
       
-      // Form input animations
       if (formRef.current) {
         const inputFields = formRef.current.querySelectorAll('input, textarea');
         inputFields.forEach(input => {
@@ -248,7 +230,6 @@ const Contact = () => {
         });
       }
       
-      // Map marker animation
       if (mapRef.current) {
         const mapMarker = mapRef.current.querySelector('.map-marker');
         if (mapMarker) {
@@ -273,9 +254,8 @@ const Contact = () => {
         }
       }
       
-    }, contactRef); // Scope to contact section
+    }, contactRef); 
     
-    // Cleanup function
     return () => ctx.revert();
   }, []);
   

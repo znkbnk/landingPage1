@@ -10,12 +10,10 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   
-  // Debug mounting
   useEffect(() => {
     console.log('Navbar mounted:', navbarRef.current);
   }, []);
 
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -25,7 +23,6 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
-  // Handle menu toggle animation
   useEffect(() => {
     if (!mobileMenuRef.current) {
       console.error('Mobile menu ref is null');
@@ -42,7 +39,6 @@ const Navbar = () => {
     });
   }, [isMenuOpen]);
   
-  // Handle logo and menu item animations
   useEffect(() => {
     const ctx = gsap.context(() => {
       const logoElement = logoRef.current;

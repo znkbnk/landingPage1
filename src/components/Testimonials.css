@@ -38,7 +38,7 @@
 
 .testimonial-track {
   position: relative;
-  min-height: 400px; /* Ensure track has enough height for content */
+  min-height: 400px; 
   width: 100%;
 }
 
@@ -173,8 +173,6 @@
 .testimonial-dot:disabled {
   cursor: not-allowed;
 }
-
-
 
 .testimonial-decorations {
   position: absolute;

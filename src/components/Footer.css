@@ -143,7 +143,8 @@
   padding-top: 30px;
 }
 
-.copyright, .credits {
+.copyright,
+.credits {
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.6);
   margin: 5px 0;
@@ -189,22 +190,22 @@
   .footer {
     padding: 80px 0 40px;
   }
-  
+
   .footer-main {
     flex-direction: column;
     gap: 40px;
   }
-  
+
   .footer-links {
     gap: 30px;
   }
-  
+
   .footer-bottom {
     flex-direction: column;
     text-align: center;
     gap: 15px;
   }
-  
+
   .scroll-to-top {
     bottom: 20px;
     right: 20px;

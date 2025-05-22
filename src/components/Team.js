@@ -3,7 +3,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './Team.css';
 
-// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 const Team = () => {
@@ -11,7 +10,6 @@ const Team = () => {
   const titleRef = useRef(null);
   const membersRef = useRef(null);
 
-  // Team member data
   const teamData = [
     {
       id: 1,
@@ -65,11 +63,9 @@ const Team = () => {
   
   useEffect(() => {
     let ctx = gsap.context(() => {
-      // Ensure elements are initially hidden
       gsap.set(titleRef.current.querySelectorAll('.title-animation'), { opacity: 0, y: 20 });
       gsap.set(membersRef.current.querySelectorAll('.team-member'), { opacity: 0, y: 50 });
 
-      // Section title animation
       gsap.to(titleRef.current.querySelectorAll('.title-animation'), {
         y: 0,
         opacity: 1,
@@ -83,7 +79,6 @@ const Team = () => {
         }
       });
       
-      // Team members staggered animation
       const members = membersRef.current.querySelectorAll('.team-member');
       gsap.to(members, {
         y: 0,
@@ -98,14 +93,12 @@ const Team = () => {
         }
       });
       
-      // Set up hover animations for team members
       members.forEach(member => {
         const overlay = member.querySelector('.member-overlay');
         const content = member.querySelector('.member-content');
         const socialIcons = member.querySelectorAll('.social-icon');
         const image = member.querySelector('.member-image');
         
-        // Set initial states for hover elements
         gsap.set(overlay, { opacity: 0 });
         gsap.set(content, { opacity: 0 });
         gsap.set(socialIcons, { opacity: 0, y: 20 });
@@ -139,7 +132,6 @@ const Team = () => {
         member.addEventListener('mouseleave', () => hoverTl.reverse());
       });
       
-      // Add floating animation to team members
       members.forEach((member, i) => {
         gsap.to(member, {
           y: i % 2 === 0 ? 15 : -15,

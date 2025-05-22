@@ -20,7 +20,6 @@ import './App.css';
 import ErrorBoundary from './components/ErrorBoundary';
 
 
-// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, MotionPathPlugin, TextPlugin);
 
 const App = () => {
@@ -30,12 +29,9 @@ const App = () => {
   
 
   useEffect(() => {
-    // Smooth scrolling setup
     let ctx = gsap.context(() => {
-      // Initial animations when the page loads
       const tl = gsap.timeline();
       
-      // Preloader animation
       tl.to(loaderRef.current, {
         opacity: 0,
         duration: 1,
@@ -48,14 +44,12 @@ const App = () => {
         }
       });
       
-      // Fade in the main content
       tl.from("main", {
         opacity: 0,
         duration: 1,
         ease: "power2.out"
       }, "-=0.5");
       
-      // Animate navbar
       tl.from(".navbar", {
         y: -100,
         opacity: 0,
@@ -63,13 +57,11 @@ const App = () => {
         ease: "power3.out"
       }, "-=0.7");
       
-      // Setup scroll-based animations for page sections
       ScrollTrigger.defaults({
         toggleActions: "play none none reverse",
         start: "top 80%",
       });
       
-      // Page background color transitions
       const sections = document.querySelectorAll("section");
       sections.forEach((section, i) => {
         const nextSection = sections[i + 1];
@@ -89,7 +81,6 @@ const App = () => {
         }
       });
       
-      // Parallax background effect
       gsap.utils.toArray('.parallax-bg').forEach(bg => {
         gsap.to(bg, {
           backgroundPosition: `50% ${-innerHeight / 2}px`,
@@ -103,7 +94,6 @@ const App = () => {
         });
       });
       
-      // Floating elements
       gsap.utils.toArray('.float-element').forEach((element, i) => {
         gsap.to(element, {
           y: "random(-20, 20)",
@@ -119,7 +109,6 @@ const App = () => {
       
     }, appRef);
     
-    // Cleanup function
     return () => ctx.revert();
   }, []);
   

@@ -11,13 +11,13 @@
   width: 100%;
   height: 100%;
   opacity: 0.1;
-  color: var(--accent, #ff4588); /* Fallback color */
+  color: var(--accent, #ff4588); 
   z-index: 1;
 }
 
 .project-button {
   padding: 10px 20px;
-  background: var(--primary, #5d45ff); /* Fallback color */
+  background: var(--primary, #5d45ff);
   color: white;
   border-radius: 25px;
   cursor: pointer;
@@ -40,7 +40,7 @@
   text-transform: uppercase;
   cursor: pointer;
   transition: background 0.3s ease, color 0.3s ease;
-  opacity: 1; /* Ensure visibility */
+  opacity: 1;
 }
 
 .filter-btn:hover {

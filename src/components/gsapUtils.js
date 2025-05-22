@@ -1,35 +1,27 @@
 // gsapUtils.js
 import { gsap } from 'gsap';
 
-// Generate random floating particles
 export const createParticles = (container, count = 20) => {
-  // Clear previous particles
   while (container.firstChild) {
     container.removeChild(container.firstChild);
   }
   
-  // Create new particles
   for (let i = 0; i < count; i++) {
     const particle = document.createElement('div');
     particle.className = 'particle';
     
-    // Random size
     const size = Math.random() * 10 + 5;
     particle.style.width = `${size}px`;
     particle.style.height = `${size}px`;
     
-    // Random position
     particle.style.left = `${Math.random() * 100}%`;
     particle.style.top = `${Math.random() * 100}%`;
     
-    // Random background color
-    const hue = Math.random() * 60 + 180; // Blue to purple range
+    const hue = Math.random() * 60 + 180; 
     particle.style.backgroundColor = `hsla(${hue}, 80%, 60%, 0.6)`;
     
-    // Add to container
     container.appendChild(particle);
     
-    // Animate with GSAP
     gsap.to(particle, {
       x: `random(-100, 100)`,
       y: `random(-100, 100)`,
@@ -44,7 +36,6 @@ export const createParticles = (container, count = 20) => {
   }
 };
 
-// Text reveal animation
 export const textReveal = (element, text, options = {}) => {
   const defaults = {
     duration: 2,
@@ -59,7 +50,6 @@ export const textReveal = (element, text, options = {}) => {
   });
 };
 
-// Create magnetic effect on hover
 export const createMagneticEffect = (element, strength = 30) => {
   if (!element) return;
   
@@ -91,25 +81,20 @@ export const createMagneticEffect = (element, strength = 30) => {
   element.addEventListener('mousemove', handleMouseMove);
   element.addEventListener('mouseleave', handleMouseLeave);
   
-  // Return cleanup function
   return () => {
     element.removeEventListener('mousemove', handleMouseMove);
     element.removeEventListener('mouseleave', handleMouseLeave);
   };
 };
 
-// Marquee animation for text
 export const createMarquee = (element, speed = 20) => {
   if (!element) return;
   
-  // Clone the content for seamless scrolling
   const content = element.innerHTML;
   element.innerHTML = content + content;
   
-  // Get the width
   const width = element.querySelector('*').offsetWidth;
   
-  // Animate with GSAP
   const tween = gsap.to(element.children, {
     x: -width,
     ease: "none",
@@ -120,11 +105,9 @@ export const createMarquee = (element, speed = 20) => {
     }
   });
   
-  // Return the tween for later manipulation
   return tween;
 };
 
-// Create scroll-based parallax
 export const createParallax = (elements, strength = 0.1) => {
   if (!elements || elements.length === 0) return;
   
@@ -145,13 +128,11 @@ export const createParallax = (elements, strength = 0.1) => {
   
   window.addEventListener('scroll', handleScroll);
   
-  // Return cleanup function
   return () => {
     window.removeEventListener('scroll', handleScroll);
   };
 };
 
-// Create text scramble effect
 export const textScramble = (element, newText, duration = 2) => {
   const originalText = element.innerText;
   const length = Math.max(originalText.length, newText.length);
@@ -159,7 +140,6 @@ export const textScramble = (element, newText, duration = 2) => {
   
   let timeline = gsap.timeline();
   
-  // Original to scrambled
   timeline.to(element, {
     duration: duration / 2,
     onUpdate: function() {
@@ -178,7 +158,6 @@ export const textScramble = (element, newText, duration = 2) => {
     }
   });
   
-  // Scrambled to new text
   timeline.to(element, {
     duration: duration / 2,
     onUpdate: function() {

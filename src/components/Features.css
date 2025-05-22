@@ -67,7 +67,7 @@
 }
 
 .feature-content::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   width: 0;
@@ -134,7 +134,11 @@
 .image-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(93, 69, 255, 0.05), rgba(255, 69, 136, 0.05));
+  background: linear-gradient(
+    135deg,
+    rgba(93, 69, 255, 0.05),
+    rgba(255, 69, 136, 0.05)
+  );
   z-index: 1;
 }
 
@@ -145,7 +149,7 @@
   align-items: center;
   justify-content: center;
   padding: 30px;
-  font-family: 'Fira Code', monospace;
+  font-family: "Fira Code", monospace;
   color: #f1f1f1;
   font-size: 0.9rem;
   z-index: 2;
@@ -220,12 +224,12 @@
   .features-content {
     flex-direction: column;
   }
-  
+
   .features-image {
     order: -1;
     margin-bottom: 50px;
   }
-  
+
   .image-container {
     width: 100%;
     max-width: 100%;
@@ -236,18 +240,18 @@
   .timeline-line {
     left: 20px;
   }
-  
+
   .timeline-dot {
     left: 20px;
   }
-  
+
   .feature-item.left .feature-content,
   .feature-item.right .feature-content {
     width: calc(100% - 50px);
     margin-left: 50px;
     margin-right: 0;
   }
-  
+
   .feature-item.left .feature-content::before,
   .feature-item.right .feature-content::before {
     left: -10px;

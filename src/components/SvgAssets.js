@@ -1,4 +1,3 @@
-// SvgAssets.js
 import React from 'react';
 
 export const WavyLine = ({ className }) => (

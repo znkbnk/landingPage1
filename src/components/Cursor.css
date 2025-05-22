@@ -12,7 +12,6 @@
   transform: translate(-50%, -50%);
 }
 
-/* Bubbles that trail behind the cursor */
 .cursor-bubble {
   position: fixed;
   width: 8px;

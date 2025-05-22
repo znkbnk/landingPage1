@@ -4,7 +4,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Star } from "./SvgAssets";
 import "./Testimonials.css";
 
-// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
 const Testimonials = () => {
@@ -18,7 +17,6 @@ const Testimonials = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const slideIntervalRef = useRef(null);
 
-  // Testimonial data
   const testimonialData = [
     {
       id: 1,
@@ -56,10 +54,6 @@ const Testimonials = () => {
 
   const totalSlides = testimonialData.length;
 
-  // Create marquee animation
- 
-
-  // Clear and restart auto-slide interval
   const resetAutoSlide = () => {
     if (slideIntervalRef.current) {
       clearInterval(slideIntervalRef.current);
@@ -72,10 +66,8 @@ const Testimonials = () => {
     }, 5000);
   };
 
-  // Initialize animations
   useEffect(() => {
     let ctx = gsap.context(() => {
-      // Set initial states
       gsap.set(titleRef.current.querySelectorAll(".title-animation"), { 
         opacity: 0, 
         y: 30 
@@ -85,7 +77,6 @@ const Testimonials = () => {
         y: 50 
       });
 
-      // Title animation
       gsap.to(titleRef.current.querySelectorAll(".title-animation"), {
         y: 0,
         opacity: 1,
@@ -99,7 +90,6 @@ const Testimonials = () => {
         }
       });
 
-      // Slider animation
       gsap.to(sliderRef.current, {
         y: 0,
         opacity: 1,
@@ -112,10 +102,6 @@ const Testimonials = () => {
         }
       });
 
-      // Marquee animation
-
-
-      // Set initial slide positions - all slides hidden except first
       const slides = slidesRef.current?.querySelectorAll(".testimonial-slide") || [];
       if (slides.length > 0) {
         slides.forEach((slide, index) => {
@@ -135,7 +121,6 @@ const Testimonials = () => {
         });
       }
 
-      // Start auto-slide
       resetAutoSlide();
     }, testimonialsRef);
 
@@ -147,7 +132,6 @@ const Testimonials = () => {
     };
   }, []);
 
-  // Handle slide change animation
   const animateSlideChange = (newIndex) => {
     if (isAnimating || newIndex === currentSlide) return;
     setIsAnimating(true);
@@ -167,11 +151,10 @@ const Testimonials = () => {
       onComplete: () => {
         setCurrentSlide(newIndex);
         setIsAnimating(false);
-        resetAutoSlide(); // Restart auto-slide after manual navigation
+        resetAutoSlide();
       },
     });
 
-    // Prepare next slide (make it visible but transparent)
     gsap.set(nextSlideEl, { 
       display: "block", 
       opacity: 0, 
@@ -179,7 +162,6 @@ const Testimonials = () => {
       zIndex: 3
     });
 
-    // Animate out current slide
     tl.to(currentSlideEl, {
       opacity: 0,
       scale: 0.95,
@@ -187,7 +169,6 @@ const Testimonials = () => {
       ease: "power2.in",
     });
 
-    // Animate in next slide
     tl.to(nextSlideEl, {
       opacity: 1,
       scale: 1,
@@ -195,7 +176,6 @@ const Testimonials = () => {
       ease: "power2.out"
     }, "-=0.2");
 
-    // Hide previous slide and reset z-index
     tl.call(() => {
       gsap.set(currentSlideEl, { 
         display: "none",
@@ -206,7 +186,6 @@ const Testimonials = () => {
       });
     });
 
-    // Update dots
     if (dots.length > 0) {
       tl.to(dots, { 
         scale: 1,
@@ -222,7 +201,6 @@ const Testimonials = () => {
     }
   };
 
-  // Navigation functions
   const goToSlide = (index) => animateSlideChange(index);
   const goToNextSlide = () => animateSlideChange((currentSlide + 1) % totalSlides);
   const goToPrevSlide = () => animateSlideChange((currentSlide - 1 + totalSlides) % totalSlides);
@@ -234,8 +212,6 @@ const Testimonials = () => {
       id="testimonials"
       data-bgcolor="#0c1023"
     >
-     
-
       <div className="container">
         <div ref={titleRef} className="section-title">
           <h2 className="title-animation">Client Testimonials</h2>

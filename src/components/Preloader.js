@@ -1,4 +1,3 @@
-// Preloader.jsx
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import './Preloader.css';
@@ -14,7 +13,6 @@ const Preloader = () => {
     
     const tl = gsap.timeline();
     
-    // Animate circles
     tl.fromTo(circles, {
       scale: 0,
       opacity: 0
@@ -26,7 +24,6 @@ const Preloader = () => {
       ease: "elastic.out(1, 0.5)"
     });
     
-    // Animate text
     tl.fromTo(text, {
       opacity: 0,
       y: 20
@@ -37,7 +34,6 @@ const Preloader = () => {
       ease: "power2.out"
     }, "-=0.5");
     
-    // Animate circles moving in circular path
     circles.forEach((circle, index) => {
       const angle = (index * 137.5) % 360;
       const radius = 50;
@@ -50,7 +46,6 @@ const Preloader = () => {
         delay: 0.5 + index * 0.1
       });
       
-      // Continuous spinning animation
       gsap.to(circle, {
         rotation: 360,
         repeat: -1,
@@ -59,7 +54,6 @@ const Preloader = () => {
       });
     });
     
-    // Animate text with typing effect
     gsap.to(text, {
       text: {
         value: "Welcome to our creative studio",
@@ -70,7 +64,6 @@ const Preloader = () => {
       delay: 1
     });
     
-    // Pulse animation for text
     gsap.to(text, {
       scale: 1.05,
       repeat: -1,
@@ -82,7 +75,6 @@ const Preloader = () => {
     
   }, []);
   
-  // Create array of circle refs
   const addToCirclesRef = (el) => {
     if (el && !circlesRef.current.includes(el)) {
       circlesRef.current.push(el);

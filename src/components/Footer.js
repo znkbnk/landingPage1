@@ -4,7 +4,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight } from './SvgAssets';
 import './Footer.css';
 
-// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
@@ -17,9 +16,7 @@ const Footer = () => {
   const waveRef = useRef(null);
 
   useEffect(() => {
-    // Animation context for cleanup
     const ctx = gsap.context(() => {
-      // Wave animation
       gsap.fromTo(waveRef.current.querySelectorAll('path'),
         { x: 0 },
         {
@@ -30,7 +27,6 @@ const Footer = () => {
         }
       );
 
-      // Logo animation
       gsap.from(logoRef.current, {
         y: 50,
         opacity: 0,
@@ -39,9 +35,8 @@ const Footer = () => {
         ease: 'power3.out'
       });
 
-      // Link animations - Fixed selector to target all links and list items
       const linkElements = linksRef.current.querySelectorAll('a, li');
-      gsap.set(linkElements, { opacity: 0, y: 30 }); // Set initial state
+      gsap.set(linkElements, { opacity: 0, y: 30 }); 
       
       gsap.to(linkElements, {
         y: 0,
@@ -56,7 +51,6 @@ const Footer = () => {
         }
       });
 
-      // Also animate the column headers
       const columnHeaders = linksRef.current.querySelectorAll('h3');
       gsap.set(columnHeaders, { opacity: 0, y: 20 });
       
@@ -73,7 +67,6 @@ const Footer = () => {
         }
       });
 
-      // Social icons animation
       const socialIcons = socialsRef.current.querySelectorAll('.social-icon');
       gsap.from(socialIcons, {
         y: 20,
@@ -84,7 +77,6 @@ const Footer = () => {
         ease: 'back.out(1.2)'
       });
 
-      // Copyright animation
       gsap.from(copyrightRef.current, {
         y: 20,
         opacity: 0,
@@ -93,7 +85,6 @@ const Footer = () => {
         ease: 'power3.out'
       });
 
-      // Back to top button animation
       gsap.set(topButtonRef.current, { scale: 0, opacity: 0 });
 
       ScrollTrigger.create({
@@ -119,7 +110,6 @@ const Footer = () => {
         }
       });
 
-      // Back to top click handler
       topButtonRef.current.addEventListener('click', (e) => {
         e.preventDefault();
         gsap.to(window, {
@@ -129,7 +119,6 @@ const Footer = () => {
         });
       });
 
-      // Hover effects for links - Get fresh reference after animation
       setTimeout(() => {
         const links = linksRef.current.querySelectorAll('a');
         links.forEach(link => {
@@ -150,7 +139,6 @@ const Footer = () => {
         });
       }, 100);
 
-      // Hover effects for social icons
       socialIcons.forEach(icon => {
         icon.addEventListener('mouseenter', () => {
           gsap.to(icon, {

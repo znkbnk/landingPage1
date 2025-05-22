@@ -102,10 +102,8 @@ const Portfolio = () => {
 
       if (filterRef.current) {
         const buttons = filterRef.current.querySelectorAll(".filter-btn");
-        console.log("Filter buttons found:", buttons.length); // Debug log
-        // Initialize buttons as visible
+        console.log("Filter buttons found:", buttons.length);
         gsap.set(buttons, { opacity: 1, y: 0 });
-        // Optional: Add entrance animation
         gsap.from(buttons, {
           y: 30,
           opacity: 0,
@@ -114,12 +112,11 @@ const Portfolio = () => {
           ease: "power3.out",
           scrollTrigger: {
             trigger: filterRef.current,
-            start: "top 95%", // Adjusted for earlier trigger
+            start: "top 95%",
             toggleActions: "play none none reset",
           },
         });
 
-        // Add hover effects
         buttons.forEach((btn) => {
           const handleEnter = () => {
             if (!btn.classList.contains("active")) {
@@ -240,7 +237,7 @@ const Portfolio = () => {
 
     if (filterRef.current) {
       const buttons = filterRef.current.querySelectorAll(".filter-btn");
-      console.log("Filter click:", category, "Buttons:", buttons.length); // Debug log
+      console.log("Filter click:", category, "Buttons:", buttons.length);
       buttons.forEach((btn) => {
         const isActive = btn.getAttribute("data-category") === category;
         gsap.to(btn, {
